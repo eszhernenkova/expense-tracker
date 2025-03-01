@@ -1,0 +1,28 @@
+
+@use '../../index.scss' as *;
+.layout {
+    display: flex;
+    min-height: 100vh;
+
+
+    .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 3;
+
+        img {
+            width: 50%;
+            height: 50%;
+            object-fit: cover;
+        }
+    }
+
+    .content {
+        flex: 7;
+        border-left: 1px solid $separator-color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

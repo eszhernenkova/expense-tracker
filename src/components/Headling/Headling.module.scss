@@ -1,0 +1,9 @@
+@use '../../index.scss' as *;
+
+.title {
+    color: $text-color;
+    font-size: 36px;
+    margin: 0;
+    font-weight: 400;
+    font-family: 'Soledago', sans-serif;
+}

@@ -1,0 +1,45 @@
+
+$primary-color: #816CF8;
+$primary-hover-color: #72B1FA;
+$text-color: #000000;
+$text-secondary-color: #FFFFFF;
+$separator-color: #A5B8DB;
+$background-color: linear-gradient(162deg, rgba(129, 108, 248, 1) 0%, rgba(205, 217, 225, 0.4290091036414566) 49%, rgba(0, 212, 255, 1) 100%);
+
+@font-face {
+  font-family: 'Pilowlava-Atome';
+  /* Имя шрифта */
+  src: 
+    url('/src/assets/fonts/Pilowlava-Atome.otf') format('opentype');
+  /* Шрифт в формате woff */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pilowlava-Regular';
+  /* Второй шрифт */
+  src: 
+    url('/src/assets/fonts/Pilowlava-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Soledago';
+  src: url('/src/assets/fonts/Soledago.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Применяем шрифты в проекте */
+h1,
+h2,
+h3 {
+  font-family: 'Pilowlava-Atome', sans-serif;
+}
+
+body {
+  font-family: 'Pilowlava-Atome', sans-serif;
+  margin: 0;
+}
