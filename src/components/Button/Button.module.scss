@@ -1,0 +1,29 @@
+@use '../../index.scss' as *;
+
+.button {
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    border: none;
+    border-radius: 29px;
+    color: #FFFFFF;
+    background: $primary-color;
+    
+
+    &:hover {
+        background: $primary-hover-color;
+
+    }
+
+    .small {
+        padding: 10px 25px;
+        font-size: 16px;
+    }
+
+    .big {
+        padding: 20px 60px;
+        font-size: 15px;
+        text-transform: uppercase;
+        box-shadow: 0px 10px 40px 0px rgba(122, 129, 190, 0.16);
+    }
+}

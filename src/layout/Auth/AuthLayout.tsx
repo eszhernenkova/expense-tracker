@@ -1,6 +1,4 @@
-
 import styles from './AuthLayout.module.scss'
-
 import { Outlet } from 'react-router-dom'
 
 function AuthLayout() {
@@ -10,8 +8,8 @@ function AuthLayout() {
             <img src="/logo.png" alt="Логотип" />
         </div>
         <div className={styles.content}>
-				<Outlet />
-			</div>
+          <Outlet />
+        </div>
     </div>
   )
 }

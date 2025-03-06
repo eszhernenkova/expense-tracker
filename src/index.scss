@@ -6,24 +6,6 @@ $text-secondary-color: #FFFFFF;
 $separator-color: #A5B8DB;
 $background-color: linear-gradient(162deg, rgba(129, 108, 248, 1) 0%, rgba(205, 217, 225, 0.4290091036414566) 49%, rgba(0, 212, 255, 1) 100%);
 
-@font-face {
-  font-family: 'Pilowlava-Atome';
-  /* Имя шрифта */
-  src: 
-    url('/src/assets/fonts/Pilowlava-Atome.otf') format('opentype');
-  /* Шрифт в формате woff */
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Pilowlava-Regular';
-  /* Второй шрифт */
-  src: 
-    url('/src/assets/fonts/Pilowlava-Regular.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
 
 @font-face {
   font-family: 'Soledago';
@@ -32,14 +14,22 @@ $background-color: linear-gradient(162deg, rgba(129, 108, 248, 1) 0%, rgba(205, 
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Steppe';
+  src: url('/src/assets/fonts/Steppe.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Применяем шрифты в проекте */
 h1,
 h2,
 h3 {
-  font-family: 'Pilowlava-Atome', sans-serif;
+  font-family: 'Soledago', sans-serif;
+  font-weight: normal;
 }
 
 body {
-  font-family: 'Pilowlava-Atome', sans-serif;
+  font-family: 'Steppe', sans-serif;
   margin: 0;
 }

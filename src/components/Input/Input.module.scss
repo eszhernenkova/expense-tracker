@@ -1,0 +1,10 @@
+@use '../../index.scss' as *;
+
+.input {
+    font-size: 17px;
+    color: $text-color;
+    border: 1px solid #EEE;
+    box-shadow: 15px 20px 45px 0px rgba(233, 2333, 233, 0.25);
+    border-radius: 10px;
+    padding: 10px;
+}
