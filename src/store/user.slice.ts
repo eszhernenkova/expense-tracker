@@ -1,6 +1,9 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios, { AxiosError } from "axios";
+import { loadState } from "./storage";
 
+
+export const JWT_PERSISTENT_STATE = 'userData';
 interface UserState {
   token: string | null;
   loading: boolean;
@@ -8,10 +11,14 @@ interface UserState {
 }
 
 const initialState: UserState = {
-  token: null,
   loading: false,
   error: null,
+  token: loadState<UserPersistentState>(JWT_PERSISTENT_STATE)?.token ?? null
 };
+
+export interface UserPersistentState {
+  token: string | null;
+}
 
 // асинхронный запрос для логина
 export const loginUser = createAsyncThunk<
@@ -47,14 +54,17 @@ const userSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(loginUser.fulfilled, (state, action: PayloadAction<{ token: string } | undefined>) => {
-        if (action.payload) {
-          state.token = action.payload.token; // сохранить токен
-          localStorage.setItem("token", action.payload.token); // записать в localStorage
-        } else {
-          state.error = "Ошибка при авторизации";
-        }
-        state.loading = false;
+      // .addCase(loginUser.fulfilled, (state, action: PayloadAction<{ token: string } | undefined>) => {
+      //   if (action.payload) {
+      //     state.token = action.payload.token; // сохранить токен
+      //   } else {
+      //     state.error = "Ошибка при авторизации";
+      //   }
+      //   state.loading = false;
+      // })
+      .addCase(loginUser.fulfilled, (state, action)=> {
+        if(!action.payload) return;
+        state.token = action.payload.token;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;

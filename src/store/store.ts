@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import userSlice from "./user.slice"
+import userSlice, { JWT_PERSISTENT_STATE } from "./user.slice"
 import expenseReducer from './expenseSlice'
 import incomeReducer from './incomeSlice'
+import { saveState } from './storage';
 import axios from 'axios';
 
 axios.interceptors.request.use((config) => {
@@ -19,6 +20,11 @@ export const store = configureStore({
 		expenses: expenseReducer,
 		incomes: incomeReducer,
 	}
+});
+
+store.subscribe(()=>{
+	saveState({token: store.getState().user.token}, JWT_PERSISTENT_STATE);
+
 });
 
 export type RootState = ReturnType<typeof store.getState>;
