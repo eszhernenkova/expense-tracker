@@ -20,7 +20,7 @@ function Login() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const result = await dispatch(loginUser({ username: email, password }));
+    const result = await dispatch(loginUser({ email, password }));
 
     if (loginUser.fulfilled.match(result)) {
       navigate("/");  // переброс на главную после успешного входа
