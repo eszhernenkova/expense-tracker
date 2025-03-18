@@ -1,35 +1,35 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from '../../store/store';
-import { addExpense, removeExpense } from '../../store/expenseSlice'
+import { addIncome, removeIncome } from '../../store/incomeSlice'
 
-import styles from './ExpenseList.module.scss'
+import styles from './IncomeList.module.scss'
 import Input from "../Input/Input";
 import Button from "../Button/Button";
-import ExpenseCharts from '../Charts/ExpneseCharts'
+import ExpenseCharts from '../Charts/IncomeCharts'
 
-const ExpenseList: React.FC = () => {
-  const expenses = useSelector((state: RootState) => state.expenses.expenses);
+const IncomeList: React.FC = () => {
+  const incomes = useSelector((state: RootState) => state.incomes.incomes);
   const dispatch = useDispatch();
 
   const [source, setSource] = useState("");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
 
-  const categories = ["Продукты", "Транспорт", "Личные покупки", "Развлечения", "Сладкое", "Обязательные платежи"];
+  const categories = ["Основной доход", "Подарок", "Другое"];
 
    const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCategory(e.target.value);
   };
 
-  const filteredExpenses = category
-    ? expenses.filter((expense) => expense.category === category)
-    : expenses;
+  const filteredIncomes = category
+    ? incomes.filter((income) => income.category === category)
+    : incomes;
 
 
-  const handleAddExpense = () => {
+  const handleAddIncome = () => {
     if (!source || !amount || !category) return;
-    dispatch(addExpense({ id: Date.now().toString(), source, amount: Number(amount), category }));
+    dispatch(addIncome({ id: Date.now().toString(), source, amount: Number(amount), category }));
     setSource("");
     setAmount("");
     setCategory("");
@@ -37,11 +37,11 @@ const ExpenseList: React.FC = () => {
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); 
-    handleAddExpense();
+    handleAddIncome();
 };
 
   return (
-    <div className={styles.expenses}>
+    <div className={styles.incomes}>
         <form className={styles.form} onSubmit={handleFormSubmit} >
             <Input type="text" placeholder="Источник" value={source} onChange={(e) => setSource((e.target as HTMLInputElement).value)} />
             <Input type="number" placeholder="Сумма" value={amount} onChange={(e) => setAmount((e.target as HTMLInputElement).value)} />
@@ -57,13 +57,13 @@ const ExpenseList: React.FC = () => {
             </div>
             <Button appearence="big" type="submit" >Добавить расход</Button>
         </form>
-        <ExpenseCharts expenses={filteredExpenses} />
-        <div className={styles["expense-list"]}>
+        <ExpenseCharts expenses={filteredIncomes} />
+        <div className={styles["incomes-list"]}>
             <ul className={styles.list}>
-                {expenses.map((expense) => (
-                <li key={expense.id}>
-                    {expense.source} - {expense.amount} руб. ({expense.category})
-                    <Button onClick={() => dispatch(removeExpense(expense.id))}>Удалить</Button>
+                {incomes.map((income) => (
+                <li key={income.id}>
+                    {income.source} - {income.amount} руб. ({income.category})
+                    <Button onClick={() => dispatch(removeIncome(income.id))}>Удалить</Button>
                 </li>
                 ))}
             </ul>
@@ -72,4 +72,4 @@ const ExpenseList: React.FC = () => {
   );
 };
 
-export default ExpenseList;
+export default IncomeList;

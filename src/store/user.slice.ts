@@ -16,7 +16,7 @@ const initialState: UserState = {
 
 // Асинхронный запрос для логина
 export const loginUser = createAsyncThunk<
-  LoginResponse | undefined,  // Что будет возвращено: LoginResponse или undefined
+  LoginResponse | undefined,  
   { username: string; password: string }
 >(
   'user/login',
@@ -26,17 +26,17 @@ export const loginUser = createAsyncThunk<
         username: params.username,
         password: params.password
       });
-      return data;  // Возвращаем LoginResponse
+      return data;  // возвращаем LoginResponse
     } catch (e) {
       if (e instanceof AxiosError) {
         throw new Error(e.response?.data.message);
       }
-      return undefined;  // В случае ошибки возвращаем undefined
+      return undefined;  // при ошибке возвращаем undefined
     }
   }
 );
 
-// Слайс
+
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -55,8 +55,8 @@ const userSlice = createSlice({
         loginUser.fulfilled,
         (state, action: PayloadAction<LoginResponse | undefined>) => {
           if (action.payload) {
-            // Проверяем, что payload не undefined
-            state.token = action.payload.access_token;  // Используем access_token
+            // проверка, что payload не undefined
+            state.token = action.payload.token; 
           } else {
             state.error = "Ошибка при авторизации";  // Обрабатываем ошибку, если payload = undefined
           }
