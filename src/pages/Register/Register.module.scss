@@ -1,0 +1,12 @@
+@use '../../index.scss' as *;
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .field {
+        display: flex;
+        flex-direction: column;
+    }
+}

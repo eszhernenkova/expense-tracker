@@ -20,9 +20,15 @@
         }
     }
 
-    .expense-list {
-        ul {
-            list-style: none;
+    .charts {
+        display: flex;
+
+        .incomes-list {
+            ul {
+                button {
+                    margin-left: 10px;
+                }
+            }
         }
     }
 }

@@ -57,8 +57,9 @@ const ExpenseList: React.FC = () => {
             </div>
             <Button appearence="big" type="submit" >Добавить расход</Button>
         </form>
-        <ExpenseCharts expenses={filteredExpenses} />
-        <div className={styles["expense-list"]}>
+        <div className={styles.charts}>
+          <ExpenseCharts expenses={filteredExpenses} />
+          <div className={styles["expense-list"]}>
             <ul className={styles.list}>
                 {expenses.map((expense) => (
                 <li key={expense.id}>
@@ -67,6 +68,7 @@ const ExpenseList: React.FC = () => {
                 </li>
                 ))}
             </ul>
+          </div>
         </div>
     </div>
   );

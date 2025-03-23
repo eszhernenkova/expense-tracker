@@ -20,10 +20,17 @@
         }
     }
 
-    .expense-list {
-        ul{
-            list-style: none;
+    .charts{
+        display: flex;
+
+        .expense-list {
+            ul{
+                button {
+                    margin-left: 10px;
+                }
+            }
         }
     }
+
 }
 

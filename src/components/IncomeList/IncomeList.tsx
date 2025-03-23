@@ -57,16 +57,18 @@ const IncomeList: React.FC = () => {
             </div>
             <Button appearence="big" type="submit" >Добавить расход</Button>
         </form>
-        <ExpenseCharts expenses={filteredIncomes} />
-        <div className={styles["incomes-list"]}>
-            <ul className={styles.list}>
-                {incomes.map((income) => (
-                <li key={income.id}>
-                    {income.source} - {income.amount} руб. ({income.category})
-                    <Button onClick={() => dispatch(removeIncome(income.id))}>Удалить</Button>
-                </li>
-                ))}
-            </ul>
+        <div className={styles.charts}>
+          <ExpenseCharts expenses={filteredIncomes} />
+          <div className={styles["incomes-list"]}>
+              <ul className={styles.list}>
+                  {incomes.map((income) => (
+                  <li key={income.id}>
+                      {income.source} - {income.amount} руб. ({income.category})
+                      <Button onClick={() => dispatch(removeIncome(income.id))}>Удалить</Button>
+                  </li>
+                  ))}
+              </ul>
+          </div>
         </div>
     </div>
   );
