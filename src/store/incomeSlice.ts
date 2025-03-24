@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { loadState, saveState } from "./storage";
 
 interface Income {
   id: string;
@@ -11,8 +12,10 @@ interface IncomeState {
   incomes: Income[];
 }
 
+const LOCAL_STORAGE_KEY = "incomes";
+
 const initialState: IncomeState = {
-  incomes: [],
+  incomes:  loadState<Income[]>(LOCAL_STORAGE_KEY) ?? [],
 };
 
 const incomeSlice = createSlice({
@@ -21,9 +24,11 @@ const incomeSlice = createSlice({
   reducers: {
     addIncome: (state, action: PayloadAction<Income>) => {
       state.incomes.push(action.payload);
+      saveState(state.incomes, LOCAL_STORAGE_KEY);
     },
     removeIncome: (state, action: PayloadAction<string>) => {
       state.incomes = state.incomes.filter((inc) => inc.id !== action.payload);
+      saveState(state.incomes, LOCAL_STORAGE_KEY);
     },
   },
 });

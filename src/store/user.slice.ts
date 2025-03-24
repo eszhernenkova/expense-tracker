@@ -89,6 +89,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { logout } = userSlice.actions;
+export const userActions  = userSlice.actions;
 
 export default userSlice.reducer;

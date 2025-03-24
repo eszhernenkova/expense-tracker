@@ -6,6 +6,9 @@ import incomeReducer from './incomeSlice'
 import { saveState } from './storage';
 import axios from 'axios';
 
+
+//для автоматического добавления токена во все запросы
+//применяется ко всем запросам, т.е. не нужно добавлять заголовки в каждый запрос
 axios.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) {

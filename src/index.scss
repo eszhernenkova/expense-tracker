@@ -21,6 +21,10 @@ $background-color: linear-gradient(162deg, rgba(129, 108, 248, 1) 0%, rgba(205, 
   font-style: normal;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 /* Применяем шрифты в проекте */
 h1,
 h2,
@@ -32,4 +36,6 @@ h3 {
 body {
   font-family: 'Steppe', sans-serif;
   margin: 0;
+  padding: 0;
+  background: $background-color;
 }
